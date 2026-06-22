@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://5f81ibthsmiv"]
+
+[ext_resource type="Script" uid="uid://dahh1ch0bu3hi" path="res://objects/ui/network/scripts/networkUIManager.gd" id="1_4v4g2"]
+
+[node name="networkUI" type="Control" unique_id=1914415619]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4v4g2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=286374584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -33.0
+offset_right = 28.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="server" type="Button" parent="VBoxContainer" unique_id=11989283]
+layout_mode = 2
+text = "server"
+
+[node name="client" type="Button" parent="VBoxContainer" unique_id=521015784]
+layout_mode = 2
+text = "client"
+
+[node name="id" type="Label" parent="." unique_id=925549729]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.7411765)
+text = "id: 0"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/server" to="." method="_on_server_pressed"]
+[connection signal="pressed" from="VBoxContainer/client" to="." method="_on_client_pressed"]

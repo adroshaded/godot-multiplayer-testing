@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://d1fwd7obo1fch"]
+
+[ext_resource type="PackedScene" uid="uid://c8hyp78oap0y7" path="res://objects/camera/camera.tscn" id="1_0k6pt"]
+[ext_resource type="PackedScene" uid="uid://cajj8pme2ge4i" path="res://objects/character/character.tscn" id="1_hp8tt"]
+[ext_resource type="PackedScene" uid="uid://5f81ibthsmiv" path="res://objects/ui/network/network_ui.tscn" id="3_8dclr"]
+[ext_resource type="Script" uid="uid://psj01yhvkovn" path="res://scripts/network/playerSpawner.gd" id="4_fc0cb"]
+[ext_resource type="PackedScene" uid="uid://chlcnb4bjpiej" path="res://objects/pill/pill_baby.tscn" id="5_6d32c"]
+[ext_resource type="Script" uid="uid://c4t5f238cmuor" path="res://scripts/random/map/bowlingBall.gd" id="6_dtumg"]
+[ext_resource type="Texture2D" uid="uid://dmbtasfvucbpq" path="res://assets/faces/lala.png" id="7_fp8sd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0k6pt"]
+
+[sub_resource type="Sky" id="Sky_8dclr"]
+sky_material = SubResource("ProceduralSkyMaterial_0k6pt")
+
+[sub_resource type="Environment" id="Environment_fc0cb"]
+background_mode = 2
+sky = SubResource("Sky_8dclr")
+fog_enabled = true
+fog_density = 0.015
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_contrast = 1.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c37uw"]
+albedo_color = Color(0.097200006, 0.12599999, 0.27, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k6pt"]
+albedo_color = Color(0.31230086, 0.54196703, 1, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6d32c"]
+friction = 0.5
+rough = true
+bounce = 0.7
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fp8sd"]
+friction = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixdry"]
+albedo_texture = ExtResource("7_fp8sd")
+uv1_scale = Vector3(2.285, 2.285, 2.285)
+uv1_offset = Vector3(0, -0.74, 2.945)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ixdry"]
+material = SubResource("StandardMaterial3D_ixdry")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e8gw0"]
+
+[node name="workspace" type="Node3D" unique_id=838490936]
+
+[node name="environment" type="WorldEnvironment" parent="." unique_id=445199769]
+environment = SubResource("Environment_fc0cb")
+
+[node name="sun" type="DirectionalLight3D" parent="." unique_id=951604018]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+light_color = Color(1, 0.8163333, 0.62, 1)
+shadow_enabled = true
+
+[node name="camera" parent="." unique_id=301207084 node_paths=PackedStringArray("subject") instance=ExtResource("1_0k6pt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+subject = NodePath("../character")
+subjectFollowRotation = true
+offset = Vector3(0, 0.75, 0)
+relativeOffset = Vector3(1.1, 0, 0)
+relativeOffsetAxis = Vector3(1, 0, 1)
+mouseLocked = true
+maxZoomDist = 50.0
+zoomAdjustDistance = 3.0
+easeRotation = true
+easeZoom = true
+rotationSmoothness = 20.0
+zoomAdjustSmoothness = 20.0
+
+[node name="character" parent="." unique_id=816984016 instance=ExtResource("1_hp8tt")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 1, 0)
+
+[node name="map" type="Node3D" parent="." unique_id=731626370]
+
+[node name="ground" type="CSGBox3D" parent="map" unique_id=559140274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+use_collision = true
+size = Vector3(128, 4, 128)
+material = SubResource("StandardMaterial3D_c37uw")
+metadata/_edit_lock_ = true
+
+[node name="ground2" type="CSGBox3D" parent="map" unique_id=1043796923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0651855, 0.26507568, 0.7826996)
+use_collision = true
+size = Vector3(2.130371, 0.53015137, 2.7410583)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ground3" type="CSGBox3D" parent="map" unique_id=50156974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3969116, 1.0914608, 1.2353172)
+use_collision = true
+size = Vector3(0.9935303, 1.2147827, 1.0722275)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="bowling" type="Node3D" parent="map" unique_id=1019651541]
+
+[node name="ground4" type="CSGBox3D" parent="map/bowling" unique_id=754639793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68356323, 0.095184326, -19.846771)
+use_collision = true
+size = Vector3(3.9397583, 0.19036865, 14)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ground7" type="CSGBox3D" parent="map/bowling" unique_id=2027381959]
+transform = Transform3D(1, 0, 0, 0, 0.9681957, 0.25019413, 0, -0.25019413, 0.9681957, 0.93481445, -0.16948307, -27.801943)
+use_collision = true
+size = Vector3(2.130371, 0.19036865, 1.7721977)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ground5" type="CSGBox3D" parent="map/bowling" unique_id=1831203728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3509425, 0.12075043, -19.846771)
+use_collision = true
+size = Vector3(0.26733398, 0.24150085, 14)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ground6" type="CSGBox3D" parent="map/bowling" unique_id=1907997618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7362585, 0.1264267, -19.846771)
+use_collision = true
+size = Vector3(0.26733398, 0.2528534, 14)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="sword" parent="map/bowling" unique_id=1208815051 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.8565576, 0.69036865, -24.02295)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="skateboard" parent="map/bowling" unique_id=1383129533 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.2565576, 0.69036865, -24.706532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="biograft" parent="map/bowling" unique_id=1913680769 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.45655763, 0.69036865, -24.706532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="slingshot" parent="map/bowling" unique_id=250453064 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.45655763, 0.69036865, -25.906532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="hyperlaser" parent="map/bowling" unique_id=1231214092 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.2565575, 0.69036865, -25.906532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="medkit" parent="map/bowling" unique_id=139602982 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.0565577, 0.69036865, -25.906532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="coil" parent="map/bowling" unique_id=1047456135 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.34344235, 0.69036865, -25.906532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="katana" parent="map/bowling" unique_id=1502840465 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.8565576, 0.69036865, -25.306532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="banhammer" parent="map/bowling" unique_id=1597542229 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.6565576, 0.69036865, -25.306532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="rocket" parent="map/bowling" unique_id=1435448056 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.056557655, 0.69036865, -25.306532)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="ball" type="RigidBody3D" parent="map/bowling" unique_id=1843174694]
+transform = Transform3D(-0.8005612, -0.57628226, 0.16431823, 0.46217537, -0.41923183, 0.78143376, -0.38143894, 0.70152944, 0.60196435, 0.8105813, 0.69036865, -10.707166)
+physics_material_override = SubResource("PhysicsMaterial_fp8sd")
+gravity_scale = 3.5
+script = ExtResource("6_dtumg")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="map/bowling/ball" unique_id=654368279]
+transform = Transform3D(0.18480638, 0.38474327, -0.90433365, 0.7308365, 0.56140876, 0.38819918, 0.6570574, -0.7326614, -0.17743245, 0, 0, 0)
+mesh = SubResource("SphereMesh_ixdry")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/bowling/ball" unique_id=659786703]
+shape = SubResource("SphereShape3D_e8gw0")
+
+[node name="ground8" type="CSGBox3D" parent="map/bowling" unique_id=1469727284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0560913, 0.095184326, -7.8919315)
+use_collision = true
+size = Vector3(12.2052, 0.19036865, 10.235699)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ui" type="Control" parent="." unique_id=1314513447]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="networkUI" parent="ui" unique_id=1914415619 instance=ExtResource("3_8dclr")]
+visible = false
+layout_mode = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=440405101]
+_spawnable_scenes = PackedStringArray("uid://cajj8pme2ge4i")
+spawn_path = NodePath("..")
+script = ExtResource("4_fc0cb")
+networkPlayer = ExtResource("1_hp8tt")
+
+[node name="shuriken" parent="." unique_id=1173244225 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.13612276, -0.94346505, 0.30223215, -0.9344822, 0.020979594, -0.35539165, 0.32895884, -0.33080736, -0.88450706, -2.068604, 0.5000002, 0.26799887)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="sword" parent="." unique_id=859712757 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.06251186, 0, -0.9980444, 0, 0.9999999, 0, 0.9980444, 0, 0.06251186, -4.4201946, 2.198852, 1.3266611)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="biograft" parent="." unique_id=1386394032 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.6886332, 0, -0.72511005, 0, 0.9999999, 0, 0.72511005, 0, 0.6886332, -4.811684, 1.0301514, 0.032458544)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="subspace" parent="." unique_id=1380588214 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.9914449, 0, 0.13052617, 0, 1, 0, -0.13052617, 0, 0.9914449, -4.1073313, 1.0301514, 0.27749813)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="hyperlaser" parent="." unique_id=171316655 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.14281882, 0.98965716, 0.01347383, -0.12203527, -0.0040983064, -0.99251723, -0.9821967, -0.1433945, 0.121358424, -4.1101923, 0.8782499, -0.30621308)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="coil" parent="." unique_id=1269806408 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.8875584, 0, -0.46069548, 0, 1, 0, 0.46069548, 0, -0.8875584, -4.432129, 0.5, -1.1489234)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5
+
+[node name="vinestaff" parent="." unique_id=46277783 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34143704, 0.8892286, -0.3044554, -0.48653576, -0.10993257, -0.86671674, -0.80417895, 0.44405755, 0.39510652, -2.4735792, 0.39327955, 1.0260643)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6d32c")
+gravity_scale = 3.5

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cajj8pme2ge4i"]
+
+[ext_resource type="Script" uid="uid://c3142xr2goxhp" path="res://objects/character/scripts/movement.gd" id="1_gr7r3"]
+[ext_resource type="Texture2D" uid="uid://bl6f3xrj5ydum" path="res://assets/faces/sword.png" id="2_fa08w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fa08w"]
+albedo_color = Color(1, 0.34901962, 0.34901962, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oslkc"]
+material = SubResource("StandardMaterial3D_fa08w")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gr7r3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqqmu"]
+transparency = 1
+albedo_texture = ExtResource("2_fa08w")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bgofs"]
+material = SubResource("StandardMaterial3D_kqqmu")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fa08w"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="character" type="CharacterBody3D" unique_id=816984016]
+script = ExtResource("1_gr7r3")
+
+[node name="body" type="MeshInstance3D" parent="." unique_id=115999319]
+mesh = SubResource("CapsuleMesh_oslkc")
+
+[node name="collision" type="CollisionShape3D" parent="." unique_id=341927009]
+shape = SubResource("CapsuleShape3D_gr7r3")
+
+[node name="face" type="MeshInstance3D" parent="." unique_id=1020288562]
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0.5, -0.5)
+mesh = SubResource("PlaneMesh_bgofs")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1277703150]
+process_mode = 3
+replication_config = SubResource("SceneReplicationConfig_fa08w")

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://chlcnb4bjpiej"]
+
+[ext_resource type="Script" uid="uid://dw34ni1ivrko7" path="res://objects/pill/scripts/pillHandler.gd" id="1_m5b85"]
+[ext_resource type="Texture2D" uid="uid://bl6f3xrj5ydum" path="res://assets/faces/sword.png" id="2_m5b85"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_apuhe"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5b85"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bvvyy"]
+radius = 0.25
+height = 1.0
+
+[node name="pillBaby" type="RigidBody3D" unique_id=1383129533 node_paths=PackedStringArray("body", "face")]
+script = ExtResource("1_m5b85")
+body = NodePath("body")
+face = NodePath("face")
+
+[node name="body" type="MeshInstance3D" parent="." unique_id=1247679061]
+mesh = SubResource("CapsuleMesh_apuhe")
+surface_material_override/0 = SubResource("StandardMaterial3D_m5b85")
+
+[node name="face" type="Sprite3D" parent="." unique_id=2134119626]
+transform = Transform3D(-1, -8.742278e-08, -7.642742e-15, -8.742278e-08, 1, 8.742278e-08, 0, 8.742278e-08, -1, 0, 0.25, -0.25)
+pixel_size = 0.0002315
+shaded = true
+double_sided = false
+texture = ExtResource("2_m5b85")
+
+[node name="collision" type="CollisionShape3D" parent="." unique_id=1117326274]
+shape = SubResource("CapsuleShape3D_bvvyy")
