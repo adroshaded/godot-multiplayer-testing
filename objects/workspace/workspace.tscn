@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://5f81ibthsmiv" path="res://objects/ui/network/network_ui.tscn" id="3_8dclr"]
 [ext_resource type="Script" uid="uid://psj01yhvkovn" path="res://scripts/network/playerSpawner.gd" id="4_fc0cb"]
 [ext_resource type="PackedScene" uid="uid://chlcnb4bjpiej" path="res://objects/pill/pill_baby.tscn" id="5_6d32c"]
+[ext_resource type="Texture2D" uid="uid://cvihlkmrqwvle" path="res://assets/faces/hyperlaser.png" id="5_fp8sd"]
 [ext_resource type="Script" uid="uid://c4t5f238cmuor" path="res://scripts/random/map/bowlingBall.gd" id="6_dtumg"]
-[ext_resource type="Texture2D" uid="uid://dmbtasfvucbpq" path="res://assets/faces/lala.png" id="7_fp8sd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0k6pt"]
 
@@ -39,7 +39,8 @@ bounce = 0.7
 friction = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixdry"]
-albedo_texture = ExtResource("7_fp8sd")
+detail_enabled = true
+detail_albedo = ExtResource("5_fp8sd")
 uv1_scale = Vector3(2.285, 2.285, 2.285)
 uv1_offset = Vector3(0, -0.74, 2.945)
 
@@ -48,6 +49,12 @@ material = SubResource("StandardMaterial3D_ixdry")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e8gw0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp8sd"]
+albedo_color = Color(0.79, 0.79, 0.79, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fp8sd"]
+viewport_path = NodePath("wall2/Sprite3D/SubViewport")
+
 [node name="workspace" type="Node3D" unique_id=838490936]
 
 [node name="environment" type="WorldEnvironment" parent="." unique_id=445199769]
@@ -55,7 +62,6 @@ environment = SubResource("Environment_fc0cb")
 
 [node name="sun" type="DirectionalLight3D" parent="." unique_id=951604018]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
-light_color = Color(1, 0.8163333, 0.62, 1)
 shadow_enabled = true
 
 [node name="camera" parent="." unique_id=301207084 node_paths=PackedStringArray("subject") instance=ExtResource("1_0k6pt")]
@@ -85,18 +91,6 @@ size = Vector3(128, 4, 128)
 material = SubResource("StandardMaterial3D_c37uw")
 metadata/_edit_lock_ = true
 
-[node name="ground2" type="CSGBox3D" parent="map" unique_id=1043796923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0651855, 0.26507568, 0.7826996)
-use_collision = true
-size = Vector3(2.130371, 0.53015137, 2.7410583)
-material = SubResource("StandardMaterial3D_0k6pt")
-
-[node name="ground3" type="CSGBox3D" parent="map" unique_id=50156974]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3969116, 1.0914608, 1.2353172)
-use_collision = true
-size = Vector3(0.9935303, 1.2147827, 1.0722275)
-material = SubResource("StandardMaterial3D_0k6pt")
-
 [node name="bowling" type="Node3D" parent="map" unique_id=1019651541]
 
 [node name="ground4" type="CSGBox3D" parent="map/bowling" unique_id=754639793]
@@ -105,88 +99,53 @@ use_collision = true
 size = Vector3(3.9397583, 0.19036865, 14)
 material = SubResource("StandardMaterial3D_0k6pt")
 
-[node name="ground7" type="CSGBox3D" parent="map/bowling" unique_id=2027381959]
-transform = Transform3D(1, 0, 0, 0, 0.9681957, 0.25019413, 0, -0.25019413, 0.9681957, 0.93481445, -0.16948307, -27.801943)
-use_collision = true
-size = Vector3(2.130371, 0.19036865, 1.7721977)
-material = SubResource("StandardMaterial3D_0k6pt")
-
 [node name="ground5" type="CSGBox3D" parent="map/bowling" unique_id=1831203728]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3509425, 0.12075043, -19.846771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3509425, 0.25123215, -19.846771)
 use_collision = true
-size = Vector3(0.26733398, 0.24150085, 14)
+size = Vector3(0.26733398, 0.5024643, 14)
 material = SubResource("StandardMaterial3D_0k6pt")
 
 [node name="ground6" type="CSGBox3D" parent="map/bowling" unique_id=1907997618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7362585, 0.1264267, -19.846771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7362585, 0.27097702, -19.846771)
 use_collision = true
-size = Vector3(0.26733398, 0.2528534, 14)
+size = Vector3(0.26733398, 0.54195404, 14)
 material = SubResource("StandardMaterial3D_0k6pt")
 
 [node name="sword" parent="map/bowling" unique_id=1208815051 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.8565576, 0.69036865, -24.02295)
-collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="skateboard" parent="map/bowling" unique_id=1383129533 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.2565576, 0.69036865, -24.706532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="biograft" parent="map/bowling" unique_id=1913680769 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.45655763, 0.69036865, -24.706532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="slingshot" parent="map/bowling" unique_id=250453064 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.45655763, 0.69036865, -25.906532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="hyperlaser" parent="map/bowling" unique_id=1231214092 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.2565575, 0.69036865, -25.906532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.2565575, 0.69036865, -25.906532)
 
 [node name="medkit" parent="map/bowling" unique_id=139602982 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.0565577, 0.69036865, -25.906532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="coil" parent="map/bowling" unique_id=1047456135 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.34344235, 0.69036865, -25.906532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="katana" parent="map/bowling" unique_id=1502840465 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.8565576, 0.69036865, -25.306532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="banhammer" parent="map/bowling" unique_id=1597542229 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.6565576, 0.69036865, -25.306532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="rocket" parent="map/bowling" unique_id=1435448056 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.056557655, 0.69036865, -25.306532)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
 
 [node name="ball" type="RigidBody3D" parent="map/bowling" unique_id=1843174694]
 transform = Transform3D(-0.8005612, -0.57628226, 0.16431823, 0.46217537, -0.41923183, 0.78143376, -0.38143894, 0.70152944, 0.60196435, 0.8105813, 0.69036865, -10.707166)
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_fp8sd")
-gravity_scale = 3.5
 script = ExtResource("6_dtumg")
 metadata/_edit_group_ = true
 
@@ -202,6 +161,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0560913, 0.095184326, -7.89
 use_collision = true
 size = Vector3(12.2052, 0.19036865, 10.235699)
 material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="playground" type="Node3D" parent="map" unique_id=2013419226]
+
+[node name="ground4" type="CSGBox3D" parent="map/playground" unique_id=1043796923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0651855, 0.26507568, 0.7826996)
+use_collision = true
+size = Vector3(2.130371, 0.53015137, 2.7410583)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ground3" type="CSGBox3D" parent="map/playground" unique_id=50156974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3969116, 1.0914608, 1.2353172)
+use_collision = true
+size = Vector3(0.9935303, 1.2147827, 1.0722275)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="shuri" parent="map/playground" unique_id=1173244225 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.13612276, -0.94346505, 0.30223215, -0.9344822, 0.020979594, -0.35539165, 0.32895884, -0.33080736, -0.88450706, -2.068604, 0.5000002, 0.26799887)
+
+[node name="sword" parent="map/playground" unique_id=859712757 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.06251186, 0, -0.9980444, 0, 0.9999999, 0, 0.9980444, 0, 0.06251186, -4.4201946, 2.198852, 1.3266611)
+
+[node name="sub" parent="map/playground" unique_id=1386394032 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.6886332, 0, -0.72511005, 0, 0.9999999, 0, 0.72511005, 0, 0.6886332, -4.811684, 1.0301514, 0.032458544)
+
+[node name="hyper" parent="map/playground" unique_id=171316655 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.14281882, 0.98965716, 0.01347383, -0.12203527, -0.0040983064, -0.99251723, -0.9821967, -0.1433945, 0.121358424, -4.1101923, 0.8782499, -0.30621308)
+
+[node name="coil" parent="map/playground" unique_id=1269806408 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.8875584, 0, -0.46069548, 0, 1, 0, 0.46069548, 0, -0.8875584, -4.432129, 0.5, -1.1489234)
+
+[node name="vine" parent="map/playground" unique_id=46277783 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34143704, 0.8892286, -0.3044554, -0.48653576, -0.10993257, -0.86671674, -0.80417895, 0.44405755, 0.39510652, -2.4735792, 0.39327955, 1.0260643)
 
 [node name="ui" type="Control" parent="." unique_id=1314513447]
 layout_mode = 3
@@ -222,44 +213,303 @@ spawn_path = NodePath("..")
 script = ExtResource("4_fc0cb")
 networkPlayer = ExtResource("1_hp8tt")
 
-[node name="shuriken" parent="." unique_id=1173244225 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-0.13612276, -0.94346505, 0.30223215, -0.9344822, 0.020979594, -0.35539165, 0.32895884, -0.33080736, -0.88450706, -2.068604, 0.5000002, 0.26799887)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="wall" type="CSGBox3D" parent="." unique_id=1807047351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.222603, 2.4074554, -0.76324403)
+use_collision = true
+size = Vector3(10.908218, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="sword" parent="." unique_id=859712757 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.06251186, 0, -0.9980444, 0, 0.9999999, 0, 0.9980444, 0, 0.06251186, -4.4201946, 2.198852, 1.3266611)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="wall3" type="CSGBox3D" parent="." unique_id=1485661571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.286716, 2.4074554, 5.336025)
+use_collision = true
+size = Vector3(3.0364456, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="biograft" parent="." unique_id=1386394032 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.6886332, 0, -0.72511005, 0, 0.9999999, 0, 0.72511005, 0, 0.6886332, -4.811684, 1.0301514, 0.032458544)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="wall2" type="CSGBox3D" parent="." unique_id=660556948]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18.982893, 2.4074554, 2.6858215)
+use_collision = true
+size = Vector3(7.5269184, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="subspace" parent="." unique_id=1380588214 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.9914449, 0, 0.13052617, 0, 1, 0, -0.13052617, 0, 0.9914449, -4.1073313, 1.0301514, 0.27749813)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="Sprite3D" type="Sprite3D" parent="wall2" unique_id=158921486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.42310905)
+texture = SubResource("ViewportTexture_fp8sd")
 
-[node name="hyperlaser" parent="." unique_id=171316655 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-0.14281882, 0.98965716, 0.01347383, -0.12203527, -0.0040983064, -0.99251723, -0.9821967, -0.1433945, 0.121358424, -4.1101923, 0.8782499, -0.30621308)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="SubViewport" type="SubViewport" parent="wall2/Sprite3D" unique_id=1203025947]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
-[node name="coil" parent="." unique_id=1269806408 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-0.8875584, 0, -0.46069548, 0, 1, 0, 0.46069548, 0, -0.8875584, -4.432129, 0.5, -1.1489234)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="Label" type="Label" parent="wall2/Sprite3D/SubViewport" unique_id=1547851432]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "MURDER"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="vinestaff" parent="." unique_id=46277783 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34143704, 0.8892286, -0.3044554, -0.48653576, -0.10993257, -0.86671674, -0.80417895, 0.44405755, 0.39510652, -2.4735792, 0.39327955, 1.0260643)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_6d32c")
-gravity_scale = 3.5
+[node name="celing" type="CSGBox3D" parent="." unique_id=913131087]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.081063, 5.314911, 4.4987035)
+use_collision = true
+size = Vector3(10.414826, 1, 7.9714355)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="ceiling" type="CSGBox3D" parent="." unique_id=1915223870]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.459697, 5.314911, 2.2958148)
+use_collision = true
+size = Vector3(6.009049, 1, 3.018921)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall6" type="CSGBox3D" parent="." unique_id=994703417]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 15.056171, 2.4074554, 6.6752195)
+use_collision = true
+size = Vector3(8.502595, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall7" type="CSGBox3D" parent="." unique_id=1602513646]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.1304035, 2.4074554, 5.647806)
+use_collision = true
+size = Vector3(1.4809344, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall4" type="CSGBox3D" parent="." unique_id=1553113087]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.110115, 2.4074554, 2.2470694)
+use_collision = true
+size = Vector3(5.464859, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="sub" type="CSGBox3D" parent="wall4" unique_id=872981102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7699213, -1.3751678, -0.008507729)
+operation = 2
+use_collision = true
+size = Vector3(1.1240845, 2.0645752, 0.8911872)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall5" type="CSGBox3D" parent="." unique_id=48089860]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.153389, 2.4074554, 2.2470694)
+use_collision = true
+size = Vector3(5.464859, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="sub" type="CSGBox3D" parent="wall5" unique_id=91098681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7699213, -1.3751678, -0.008507729)
+operation = 2
+use_collision = true
+size = Vector3(1.1240845, 2.0645752, 0.8911872)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="lights" type="Node3D" parent="." unique_id=1846499259]
+
+[node name="light" type="OmniLight3D" parent="lights" unique_id=869808502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.788552, 3.0585003, 0.7538414)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="light2" type="OmniLight3D" parent="lights" unique_id=2061318041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.252022, 3.0585003, 0.67268753)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="light3" type="OmniLight3D" parent="lights" unique_id=2000065431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.252022, 3.0585003, 5.197021)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="light4" type="OmniLight3D" parent="lights" unique_id=962741744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.808844, 3.0585003, 5.2984624)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="pills" type="Node3D" parent="." unique_id=1786567126]
+
+[node name="sword" parent="pills" unique_id=1414264408 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 0.54124844)
+
+[node name="skate" parent="pills" unique_id=197384147 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 1.2482208)
+
+[node name="bio" parent="pills" unique_id=1618868175 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 1.966705)
+
+[node name="tana" parent="pills" unique_id=1267471857 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 2.7387595)
+
+[node name="ban" parent="pills" unique_id=1212325261 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 3.4225953)
+
+[node name="rocket" parent="pills" unique_id=176678513 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 0.54124844)
+
+[node name="sling" parent="pills" unique_id=1722349595 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 1.2482208)
+
+[node name="hyper" parent="pills" unique_id=872516885 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 1.966705)
+
+[node name="shuri" parent="pills" unique_id=31083502 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 2.7387595)
+
+[node name="scythe" parent="pills" unique_id=2073398204 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 3.4225953)
+
+[node name="med" parent="pills" unique_id=1740909527 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 0.54124844)
+
+[node name="bb" parent="pills" unique_id=282742788 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 1.2482208)
+
+[node name="sub" parent="pills" unique_id=1413781416 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 1.966705)
+
+[node name="vine" parent="pills" unique_id=638518311 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 2.7387595)
+
+[node name="coil" parent="pills" unique_id=209027227 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 3.4225953)
+
+[node name="sword2" parent="pills" unique_id=1698277754 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.446944, 1.0301514, 1.2571443)
+
+[node name="skate2" parent="pills" unique_id=2102168190 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.206456, 1.0301514, 1.9219568)
+
+[node name="bio2" parent="pills" unique_id=1278643635 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.962051, 1.0301514, 2.5975943)
+
+[node name="tana2" parent="pills" unique_id=276922281 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.699425, 1.0301514, 3.3236077)
+
+[node name="ban2" parent="pills" unique_id=43285854 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.466807, 1.0301514, 3.9666634)
+
+[node name="rocket2" parent="pills" unique_id=1092579465 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.1729555, 1.0301514, 1.5197706)
+
+[node name="sling2" parent="pills" unique_id=930778878 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.932467, 1.0301514, 2.1845832)
+
+[node name="hyper2" parent="pills" unique_id=1702598606 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.688064, 1.0301514, 2.8602204)
+
+[node name="shuri2" parent="pills" unique_id=1337746983 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.425436, 1.0301514, 3.5862339)
+
+[node name="scythe2" parent="pills" unique_id=1390460412 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.192819, 1.0301514, 4.2292895)
+
+[node name="med2" parent="pills" unique_id=2031190538 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.900454, 1.0301514, 1.7829348)
+
+[node name="bb2" parent="pills" unique_id=177548570 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.6599655, 1.0301514, 2.4477472)
+
+[node name="sub2" parent="pills" unique_id=971159782 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.415562, 1.0301514, 3.1233845)
+
+[node name="vine2" parent="pills" unique_id=641395112 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.152935, 1.0301514, 3.8493981)
+
+[node name="coil2" parent="pills" unique_id=725386192 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.920317, 1.0301514, 4.4924536)
+
+[node name="sword3" parent="pills" unique_id=493148467 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.856405, 1.0301514, 2.547666)
+
+[node name="skate3" parent="pills" unique_id=745210571 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.336824, 1.0301514, 3.0270882)
+
+[node name="bio3" parent="pills" unique_id=1466218787 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.808783, 1.0301514, 3.5143166)
+
+[node name="tana3" parent="pills" unique_id=412479935 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.24137, 1.0301514, 4.0378733)
+
+[node name="ban3" parent="pills" unique_id=1432600322 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 14.738793, 1.0301514, 4.501606)
+
+[node name="rocket3" parent="pills" unique_id=1328311121 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.379961, 1.0301514, 3.1150775)
+
+[node name="sling3" parent="pills" unique_id=1976367106 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.86038, 1.0301514, 3.594499)
+
+[node name="hyper3" parent="pills" unique_id=1731261752 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.332338, 1.0301514, 4.0817275)
+
+[node name="shuri3" parent="pills" unique_id=2062350848 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.764925, 1.0301514, 4.605284)
+
+[node name="scythe3" parent="pills" unique_id=1602788392 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.262348, 1.0301514, 5.0690165)
+
+[node name="med3" parent="pills" unique_id=2119506173 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.904589, 1.0301514, 3.683651)
+
+[node name="bb3" parent="pills" unique_id=112273319 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.385006, 1.0301514, 4.163072)
+
+[node name="sub3" parent="pills" unique_id=256807297 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.856964, 1.0301514, 4.6503005)
+
+[node name="vine3" parent="pills" unique_id=2088210518 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.289553, 1.0301514, 5.1738567)
+
+[node name="coil3" parent="pills" unique_id=526728035 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.786976, 1.0301514, 5.6375904)
+
+[node name="sword4" parent="pills" unique_id=280489216 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.268153, 3.7714114, 3.6519113)
+
+[node name="skate4" parent="pills" unique_id=96288079 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.654455, 3.4242823, 3.6000848)
+
+[node name="bio4" parent="pills" unique_id=2117474195 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.030764, 3.0715013, 3.5474138)
+
+[node name="tana4" parent="pills" unique_id=463927886 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.36057, 2.6924162, 3.4908166)
+
+[node name="ban4" parent="pills" unique_id=595480982 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.766956, 2.356648, 3.4406862)
+
+[node name="rocket4" parent="pills" unique_id=1224101792 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.21889, 3.7435465, 4.4218874)
+
+[node name="sling4" parent="pills" unique_id=652663129 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.605192, 3.396418, 4.3700604)
+
+[node name="hyper4" parent="pills" unique_id=1736242195 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.981502, 3.0436368, 4.3173895)
+
+[node name="shuri4" parent="pills" unique_id=2031722775 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.311307, 2.6645515, 4.2607913)
+
+[node name="scythe4" parent="pills" unique_id=826262162 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.717693, 2.328783, 4.210661)
+
+[node name="med4" parent="pills" unique_id=1197336080 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.169527, 3.7156248, 5.19344)
+
+[node name="bb4" parent="pills" unique_id=239181741 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.555828, 3.368496, 5.1416116)
+
+[node name="sub4" parent="pills" unique_id=1452245133 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.932137, 3.0157142, 5.0889406)
+
+[node name="vine4" parent="pills" unique_id=1320605370 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.261943, 2.6366298, 5.032343)
+
+[node name="coil4" parent="pills" unique_id=257610451 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.668328, 2.300861, 4.982214)

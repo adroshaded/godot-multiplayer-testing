@@ -94,12 +94,20 @@ func changeFace(image: Texture2D, size: float = 1.0) -> void:
 func changePhighter(type : String) -> void:
 	changeColor(pillData[type].color)
 	#changeFace(load("res://assets/faces/sword.png"))
-	changeFace(load(pillData[type].image), pillData[name].imageSize)
+	changeFace(load(pillData[type].image), pillData[type].imageSize)
 	set_meta("type", type)
 
+func isTextMatchingPhighter(text : String) -> String:
+	var regex = RegEx.create_from_string("[A-z]+") # dont get numbers
+	for i : String in pillData:
+		if i.is_subsequence_ofn(regex.search(text).get_string()) or regex.search(text).get_string().is_subsequence_of(i):
+			return i
+	return ""
+
 func _ready() -> void:
-	if pillData.has(name):
-		changePhighter(name)
+	var matching = isTextMatchingPhighter(name)
+	if matching:
+		changePhighter(matching)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("1"):

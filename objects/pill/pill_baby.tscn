@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dw34ni1ivrko7" path="res://objects/pill/scripts/pillHandler.gd" id="1_m5b85"]
 [ext_resource type="Texture2D" uid="uid://bl6f3xrj5ydum" path="res://assets/faces/sword.png" id="2_m5b85"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m5b85"]
+bounce = 0.28
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_apuhe"]
 radius = 0.25
 height = 1.0
@@ -15,6 +18,8 @@ radius = 0.25
 height = 1.0
 
 [node name="pillBaby" type="RigidBody3D" unique_id=1383129533 node_paths=PackedStringArray("body", "face")]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_m5b85")
 script = ExtResource("1_m5b85")
 body = NodePath("body")
 face = NodePath("face")
