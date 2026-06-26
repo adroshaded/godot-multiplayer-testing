@@ -27,7 +27,7 @@ var pillData = {
 	"banhammer": {
 		"color": Color("3A3A82"),
 		"image": "res://assets/faces/banhammer.png",
-		"imageSize": 1.0
+		"imageSize": .4
 	},
 	"rocket": {
 		"color": Color("527CAE"),
@@ -46,7 +46,7 @@ var pillData = {
 		"imageSize": 2.2 # 2.2 / 1.3
 	},
 	"shuriken": {
-		"color": Color("7CC740"),
+		"color": Color("8159e5"),
 		"image": "res://assets/faces/shuriken.png",
 		"imageSize": 1.2
 	},

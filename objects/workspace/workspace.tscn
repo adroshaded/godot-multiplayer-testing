@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://chlcnb4bjpiej" path="res://objects/pill/pill_baby.tscn" id="5_6d32c"]
 [ext_resource type="Texture2D" uid="uid://cvihlkmrqwvle" path="res://assets/faces/hyperlaser.png" id="5_fp8sd"]
 [ext_resource type="Script" uid="uid://c4t5f238cmuor" path="res://scripts/random/map/bowlingBall.gd" id="6_dtumg"]
+[ext_resource type="Script" uid="uid://dmdcuouwrc6h8" path="res://objects/ui/debug/scripts/debugUI.gd" id="8_0deix"]
+[ext_resource type="Script" uid="uid://sq7bnuaeyjv1" path="res://scripts/random/map/cannon.gd" id="8_ixdry"]
+[ext_resource type="Script" uid="uid://dqom6sp6fdd0i" path="res://scripts/random/map/racing.gd" id="9_e8gw0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0k6pt"]
 
@@ -17,7 +20,7 @@ sky_material = SubResource("ProceduralSkyMaterial_0k6pt")
 background_mode = 2
 sky = SubResource("Sky_8dclr")
 fog_enabled = true
-fog_density = 0.015
+fog_density = 0.005
 fog_aerial_perspective = 1.0
 fog_sky_affect = 0.0
 adjustment_enabled = true
@@ -53,7 +56,7 @@ material = SubResource("StandardMaterial3D_ixdry")
 albedo_color = Color(0.79, 0.79, 0.79, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fp8sd"]
-viewport_path = NodePath("wall2/Sprite3D/SubViewport")
+viewport_path = NodePath("map/murder room/wall2/Sprite3D/SubViewport")
 
 [node name="workspace" type="Node3D" unique_id=838490936]
 
@@ -179,8 +182,8 @@ material = SubResource("StandardMaterial3D_0k6pt")
 [node name="shuri" parent="map/playground" unique_id=1173244225 instance=ExtResource("5_6d32c")]
 transform = Transform3D(-0.13612276, -0.94346505, 0.30223215, -0.9344822, 0.020979594, -0.35539165, 0.32895884, -0.33080736, -0.88450706, -2.068604, 0.5000002, 0.26799887)
 
-[node name="sword" parent="map/playground" unique_id=859712757 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.06251186, 0, -0.9980444, 0, 0.9999999, 0, 0.9980444, 0, 0.06251186, -4.4201946, 2.198852, 1.3266611)
+[node name="sub2" parent="map/playground" unique_id=859712757 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.94785756, 0, -0.31869474, 0, 0.9999999, 0, 0.31869474, 0, -0.94785756, -4.4201946, 2.198852, 1.3266611)
 
 [node name="sub" parent="map/playground" unique_id=1386394032 instance=ExtResource("5_6d32c")]
 transform = Transform3D(0.6886332, 0, -0.72511005, 0, 0.9999999, 0, 0.72511005, 0, 0.6886332, -4.811684, 1.0301514, 0.032458544)
@@ -194,55 +197,300 @@ transform = Transform3D(-0.8875584, 0, -0.46069548, 0, 1, 0, 0.46069548, 0, -0.8
 [node name="vine" parent="map/playground" unique_id=46277783 instance=ExtResource("5_6d32c")]
 transform = Transform3D(0.34143704, 0.8892286, -0.3044554, -0.48653576, -0.10993257, -0.86671674, -0.80417895, 0.44405755, 0.39510652, -2.4735792, 0.39327955, 1.0260643)
 
-[node name="ui" type="Control" parent="." unique_id=1314513447]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
+[node name="murder room" type="Node3D" parent="map" unique_id=1821394403]
 
-[node name="networkUI" parent="ui" unique_id=1914415619 instance=ExtResource("3_8dclr")]
-visible = false
-layout_mode = 1
+[node name="celing" type="CSGBox3D" parent="map/murder room" unique_id=913131087]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.081063, 5.314911, 2.9780047)
+use_collision = true
+size = Vector3(7.373429, 1, 7.9714355)
+material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=440405101]
-_spawnable_scenes = PackedStringArray("uid://cajj8pme2ge4i")
-spawn_path = NodePath("..")
-script = ExtResource("4_fc0cb")
-networkPlayer = ExtResource("1_hp8tt")
+[node name="ceiling" type="CSGBox3D" parent="map/murder room" unique_id=1915223870]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.459697, 5.314911, 2.2958148)
+use_collision = true
+size = Vector3(6.009049, 1, 3.018921)
+material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="wall" type="CSGBox3D" parent="." unique_id=1807047351]
+[node name="wall6" type="CSGBox3D" parent="map/murder room" unique_id=994703417]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 15.056171, 2.4074554, 6.6752195)
+use_collision = true
+size = Vector3(8.502595, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall7" type="CSGBox3D" parent="map/murder room" unique_id=1602513646]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.1304035, 2.4074554, 5.647806)
+use_collision = true
+size = Vector3(1.4809344, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall4" type="CSGBox3D" parent="map/murder room" unique_id=1553113087]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.110115, 2.4074554, 2.2470694)
+use_collision = true
+size = Vector3(5.464859, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="sub" type="CSGBox3D" parent="map/murder room/wall4" unique_id=872981102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7699213, -1.3751678, -0.008507729)
+operation = 2
+use_collision = true
+size = Vector3(1.1240845, 2.0645752, 0.8911872)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="wall5" type="CSGBox3D" parent="map/murder room" unique_id=48089860]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.153389, 2.4074554, 2.2470694)
+use_collision = true
+size = Vector3(5.464859, 4.814911, 0.6804714)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="sub" type="CSGBox3D" parent="map/murder room/wall5" unique_id=91098681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7699213, -1.3751678, -0.008507729)
+operation = 2
+use_collision = true
+size = Vector3(1.1240845, 2.0645752, 0.8911872)
+material = SubResource("StandardMaterial3D_fp8sd")
+
+[node name="lights" type="Node3D" parent="map/murder room" unique_id=1846499259]
+
+[node name="light" type="OmniLight3D" parent="map/murder room/lights" unique_id=869808502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.788552, 3.0585003, 0.7538414)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="light2" type="OmniLight3D" parent="map/murder room/lights" unique_id=2061318041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.252022, 3.0585003, 0.67268753)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="light3" type="OmniLight3D" parent="map/murder room/lights" unique_id=2000065431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.252022, 3.0585003, 5.197021)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="light4" type="OmniLight3D" parent="map/murder room/lights" unique_id=962741744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.808844, 3.0585003, 5.2984624)
+light_color = Color(0.84, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 22.22
+
+[node name="pills" type="Node3D" parent="map/murder room" unique_id=1786567126]
+
+[node name="sword" parent="map/murder room/pills" unique_id=1414264408 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 0.54124844)
+
+[node name="skate" parent="map/murder room/pills" unique_id=197384147 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 1.2482208)
+
+[node name="bio" parent="map/murder room/pills" unique_id=1618868175 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 1.966705)
+
+[node name="tana" parent="map/murder room/pills" unique_id=1267471857 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 2.7387595)
+
+[node name="ban" parent="map/murder room/pills" unique_id=1212325261 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 3.4225953)
+
+[node name="rocket" parent="map/murder room/pills" unique_id=176678513 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 0.54124844)
+
+[node name="sling" parent="map/murder room/pills" unique_id=1722349595 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 1.2482208)
+
+[node name="hyper" parent="map/murder room/pills" unique_id=872516885 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 1.966705)
+
+[node name="shuri" parent="map/murder room/pills" unique_id=31083502 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 2.7387595)
+
+[node name="scythe" parent="map/murder room/pills" unique_id=2073398204 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 3.4225953)
+
+[node name="med" parent="map/murder room/pills" unique_id=1740909527 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 0.54124844)
+
+[node name="bb" parent="map/murder room/pills" unique_id=282742788 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 1.2482208)
+
+[node name="sub" parent="map/murder room/pills" unique_id=1413781416 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 1.966705)
+
+[node name="vine" parent="map/murder room/pills" unique_id=638518311 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 2.7387595)
+
+[node name="coil" parent="map/murder room/pills" unique_id=209027227 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 3.4225953)
+
+[node name="sword2" parent="map/murder room/pills" unique_id=1698277754 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.446944, 1.0301514, 1.2571443)
+
+[node name="skate2" parent="map/murder room/pills" unique_id=2102168190 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.206456, 1.0301514, 1.9219568)
+
+[node name="bio2" parent="map/murder room/pills" unique_id=1278643635 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.962051, 1.0301514, 2.5975943)
+
+[node name="tana2" parent="map/murder room/pills" unique_id=276922281 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.699425, 1.0301514, 3.3236077)
+
+[node name="ban2" parent="map/murder room/pills" unique_id=43285854 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.466807, 1.0301514, 3.9666634)
+
+[node name="rocket2" parent="map/murder room/pills" unique_id=1092579465 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.1729555, 1.0301514, 1.5197706)
+
+[node name="sling2" parent="map/murder room/pills" unique_id=930778878 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.932467, 1.0301514, 2.1845832)
+
+[node name="hyper2" parent="map/murder room/pills" unique_id=1702598606 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.688064, 1.0301514, 2.8602204)
+
+[node name="shuri2" parent="map/murder room/pills" unique_id=1337746983 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.425436, 1.0301514, 3.5862339)
+
+[node name="scythe2" parent="map/murder room/pills" unique_id=1390460412 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.192819, 1.0301514, 4.2292895)
+
+[node name="med2" parent="map/murder room/pills" unique_id=2031190538 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.900454, 1.0301514, 1.7829348)
+
+[node name="bb2" parent="map/murder room/pills" unique_id=177548570 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.6599655, 1.0301514, 2.4477472)
+
+[node name="sub2" parent="map/murder room/pills" unique_id=971159782 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.415562, 1.0301514, 3.1233845)
+
+[node name="vine2" parent="map/murder room/pills" unique_id=641395112 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.152935, 1.0301514, 3.8493981)
+
+[node name="coil2" parent="map/murder room/pills" unique_id=725386192 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.920317, 1.0301514, 4.4924536)
+
+[node name="sword3" parent="map/murder room/pills" unique_id=493148467 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.856405, 1.0301514, 2.547666)
+
+[node name="skate3" parent="map/murder room/pills" unique_id=745210571 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.336824, 1.0301514, 3.0270882)
+
+[node name="bio3" parent="map/murder room/pills" unique_id=1466218787 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.808783, 1.0301514, 3.5143166)
+
+[node name="tana3" parent="map/murder room/pills" unique_id=412479935 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.24137, 1.0301514, 4.0378733)
+
+[node name="ban3" parent="map/murder room/pills" unique_id=1432600322 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 14.738793, 1.0301514, 4.501606)
+
+[node name="rocket3" parent="map/murder room/pills" unique_id=1328311121 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.379961, 1.0301514, 3.1150775)
+
+[node name="sling3" parent="map/murder room/pills" unique_id=1976367106 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.86038, 1.0301514, 3.594499)
+
+[node name="hyper3" parent="map/murder room/pills" unique_id=1731261752 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.332338, 1.0301514, 4.0817275)
+
+[node name="shuri3" parent="map/murder room/pills" unique_id=2062350848 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.764925, 1.0301514, 4.605284)
+
+[node name="scythe3" parent="map/murder room/pills" unique_id=1602788392 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.262348, 1.0301514, 5.0690165)
+
+[node name="med3" parent="map/murder room/pills" unique_id=2119506173 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.904589, 1.0301514, 3.683651)
+
+[node name="bb3" parent="map/murder room/pills" unique_id=112273319 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.385006, 1.0301514, 4.163072)
+
+[node name="sub3" parent="map/murder room/pills" unique_id=256807297 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.856964, 1.0301514, 4.6503005)
+
+[node name="vine3" parent="map/murder room/pills" unique_id=2088210518 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.289553, 1.0301514, 5.1738567)
+
+[node name="coil3" parent="map/murder room/pills" unique_id=526728035 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.786976, 1.0301514, 5.6375904)
+
+[node name="sword4" parent="map/murder room/pills" unique_id=280489216 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.268153, 3.7714114, 3.6519113)
+
+[node name="skate4" parent="map/murder room/pills" unique_id=96288079 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.654455, 3.4242823, 3.6000848)
+
+[node name="bio4" parent="map/murder room/pills" unique_id=2117474195 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.030764, 3.0715013, 3.5474138)
+
+[node name="tana4" parent="map/murder room/pills" unique_id=463927886 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.36057, 2.6924162, 3.4908166)
+
+[node name="ban4" parent="map/murder room/pills" unique_id=595480982 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.766956, 2.356648, 3.4406862)
+
+[node name="rocket4" parent="map/murder room/pills" unique_id=1224101792 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.21889, 3.7435465, 4.4218874)
+
+[node name="sling4" parent="map/murder room/pills" unique_id=652663129 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.605192, 3.396418, 4.3700604)
+
+[node name="hyper4" parent="map/murder room/pills" unique_id=1736242195 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.981502, 3.0436368, 4.3173895)
+
+[node name="shuri4" parent="map/murder room/pills" unique_id=2031722775 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.311307, 2.6645515, 4.2607913)
+
+[node name="scythe4" parent="map/murder room/pills" unique_id=826262162 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.717693, 2.328783, 4.210661)
+
+[node name="med4" parent="map/murder room/pills" unique_id=1197336080 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.169527, 3.7156248, 5.19344)
+
+[node name="bb4" parent="map/murder room/pills" unique_id=239181741 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.555828, 3.368496, 5.1416116)
+
+[node name="sub4" parent="map/murder room/pills" unique_id=1452245133 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.932137, 3.0157142, 5.0889406)
+
+[node name="vine4" parent="map/murder room/pills" unique_id=1320605370 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.261943, 2.6366298, 5.032343)
+
+[node name="coil4" parent="map/murder room/pills" unique_id=257610451 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.668328, 2.300861, 4.982214)
+
+[node name="wall" type="CSGBox3D" parent="map/murder room" unique_id=1807047351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.222603, 2.4074554, -0.76324403)
 use_collision = true
 size = Vector3(10.908218, 4.814911, 0.6804714)
 material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="wall3" type="CSGBox3D" parent="." unique_id=1485661571]
+[node name="wall3" type="CSGBox3D" parent="map/murder room" unique_id=1485661571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.286716, 2.4074554, 5.336025)
 use_collision = true
 size = Vector3(3.0364456, 4.814911, 0.6804714)
 material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="wall2" type="CSGBox3D" parent="." unique_id=660556948]
+[node name="wall2" type="CSGBox3D" parent="map/murder room" unique_id=660556948]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18.982893, 2.4074554, 2.6858215)
 use_collision = true
 size = Vector3(7.5269184, 4.814911, 0.6804714)
 material = SubResource("StandardMaterial3D_fp8sd")
 
-[node name="Sprite3D" type="Sprite3D" parent="wall2" unique_id=158921486]
+[node name="Sprite3D" type="Sprite3D" parent="map/murder room/wall2" unique_id=158921486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.42310905)
 texture = SubResource("ViewportTexture_fp8sd")
 
-[node name="SubViewport" type="SubViewport" parent="wall2/Sprite3D" unique_id=1203025947]
+[node name="SubViewport" type="SubViewport" parent="map/murder room/wall2/Sprite3D" unique_id=1203025947]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Label" type="Label" parent="wall2/Sprite3D/SubViewport" unique_id=1547851432]
+[node name="Label" type="Label" parent="map/murder room/wall2/Sprite3D/SubViewport" unique_id=1547851432]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -252,264 +500,936 @@ text = "MURDER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="celing" type="CSGBox3D" parent="." unique_id=913131087]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.081063, 5.314911, 4.4987035)
-use_collision = true
-size = Vector3(10.414826, 1, 7.9714355)
-material = SubResource("StandardMaterial3D_fp8sd")
+[node name="cannon" type="Node3D" parent="map" unique_id=800951790]
 
-[node name="ceiling" type="CSGBox3D" parent="." unique_id=1915223870]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.459697, 5.314911, 2.2958148)
-use_collision = true
-size = Vector3(6.009049, 1, 3.018921)
-material = SubResource("StandardMaterial3D_fp8sd")
+[node name="ban" parent="map/cannon" unique_id=1177440031 instance=ExtResource("5_6d32c")]
+transform = Transform3D(2.6424266e-06, 0, -35, 0, 35, 0, 35, 0, 2.6424266e-06, -28.53162, 17.5, 35.157917)
+mass = 750.0
+gravity_scale = 0.2
 
-[node name="wall6" type="CSGBox3D" parent="." unique_id=994703417]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 15.056171, 2.4074554, 6.6752195)
-use_collision = true
-size = Vector3(8.502595, 4.814911, 0.6804714)
-material = SubResource("StandardMaterial3D_fp8sd")
+[node name="pills" type="Node3D" parent="map/cannon" unique_id=1942823228]
+transform = Transform3D(0.9988046, 0.048880443, 0, -0.048880443, 0.9988046, 0, 0, 0, 1, 19.166525, -0.40494826, 36.88959)
 
-[node name="wall7" type="CSGBox3D" parent="." unique_id=1602513646]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.1304035, 2.4074554, 5.647806)
-use_collision = true
-size = Vector3(1.4809344, 4.814911, 0.6804714)
-material = SubResource("StandardMaterial3D_fp8sd")
+[node name="scythe" parent="map/cannon/pills" unique_id=1157154861 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
 
-[node name="wall4" type="CSGBox3D" parent="." unique_id=1553113087]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.110115, 2.4074554, 2.2470694)
-use_collision = true
-size = Vector3(5.464859, 4.814911, 0.6804714)
-material = SubResource("StandardMaterial3D_fp8sd")
+[node name="scythe2" parent="map/cannon/pills" unique_id=595147795 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
 
-[node name="sub" type="CSGBox3D" parent="wall4" unique_id=872981102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7699213, -1.3751678, -0.008507729)
+[node name="scythe3" parent="map/cannon/pills" unique_id=1362009832 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe4" parent="map/cannon/pills" unique_id=1676840390 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe5" parent="map/cannon/pills" unique_id=232786812 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe6" parent="map/cannon/pills" unique_id=966331957 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe7" parent="map/cannon/pills" unique_id=914416677 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe8" parent="map/cannon/pills" unique_id=2110350048 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe9" parent="map/cannon/pills" unique_id=2048152781 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe10" parent="map/cannon/pills" unique_id=1988336091 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe11" parent="map/cannon/pills" unique_id=1251850601 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe12" parent="map/cannon/pills" unique_id=1066335594 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe13" parent="map/cannon/pills" unique_id=1368683854 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe14" parent="map/cannon/pills" unique_id=1188580708 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe15" parent="map/cannon/pills" unique_id=248761587 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe16" parent="map/cannon/pills" unique_id=1322811136 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe17" parent="map/cannon/pills" unique_id=1380480826 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe18" parent="map/cannon/pills" unique_id=590969542 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe19" parent="map/cannon/pills" unique_id=1244891887 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe20" parent="map/cannon/pills" unique_id=1393731954 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe21" parent="map/cannon/pills" unique_id=230931482 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe22" parent="map/cannon/pills" unique_id=1241806422 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe23" parent="map/cannon/pills" unique_id=1353702239 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe24" parent="map/cannon/pills" unique_id=178592270 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe25" parent="map/cannon/pills" unique_id=214467362 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe26" parent="map/cannon/pills" unique_id=301066878 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe27" parent="map/cannon/pills" unique_id=677596532 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe28" parent="map/cannon/pills" unique_id=2109498139 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe29" parent="map/cannon/pills" unique_id=2060453000 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe30" parent="map/cannon/pills" unique_id=1148608867 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe31" parent="map/cannon/pills" unique_id=1055897953 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe32" parent="map/cannon/pills" unique_id=1711009267 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe33" parent="map/cannon/pills" unique_id=1865016881 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe34" parent="map/cannon/pills" unique_id=954945886 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe35" parent="map/cannon/pills" unique_id=1960222778 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe36" parent="map/cannon/pills" unique_id=7499494 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe37" parent="map/cannon/pills" unique_id=1458894767 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe38" parent="map/cannon/pills" unique_id=726938262 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe39" parent="map/cannon/pills" unique_id=976700497 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe40" parent="map/cannon/pills" unique_id=1041581501 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe41" parent="map/cannon/pills" unique_id=1422643147 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe42" parent="map/cannon/pills" unique_id=229224420 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe43" parent="map/cannon/pills" unique_id=1579370553 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe44" parent="map/cannon/pills" unique_id=1811472584 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe45" parent="map/cannon/pills" unique_id=787298515 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe46" parent="map/cannon/pills" unique_id=981478529 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe47" parent="map/cannon/pills" unique_id=1796684771 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe48" parent="map/cannon/pills" unique_id=2110311664 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe49" parent="map/cannon/pills" unique_id=691259843 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe50" parent="map/cannon/pills" unique_id=545151800 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe51" parent="map/cannon/pills" unique_id=281841277 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe52" parent="map/cannon/pills" unique_id=75503919 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe53" parent="map/cannon/pills" unique_id=937242141 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe54" parent="map/cannon/pills" unique_id=54133831 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe55" parent="map/cannon/pills" unique_id=399498802 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe56" parent="map/cannon/pills" unique_id=1395162977 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe57" parent="map/cannon/pills" unique_id=1070423291 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe58" parent="map/cannon/pills" unique_id=1767460485 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe59" parent="map/cannon/pills" unique_id=1902568934 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe60" parent="map/cannon/pills" unique_id=888788544 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe61" parent="map/cannon/pills" unique_id=1198163574 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe62" parent="map/cannon/pills" unique_id=459763901 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210628, 0.6928253, -0.36005232, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe63" parent="map/cannon/pills" unique_id=1847529456 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe64" parent="map/cannon/pills" unique_id=94430239 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe65" parent="map/cannon/pills" unique_id=324457435 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe66" parent="map/cannon/pills" unique_id=1630835056 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe67" parent="map/cannon/pills" unique_id=2092423934 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe68" parent="map/cannon/pills" unique_id=268900152 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe69" parent="map/cannon/pills" unique_id=165233763 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe70" parent="map/cannon/pills" unique_id=1041515094 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe71" parent="map/cannon/pills" unique_id=311974452 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe72" parent="map/cannon/pills" unique_id=1420495602 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe73" parent="map/cannon/pills" unique_id=860121706 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe74" parent="map/cannon/pills" unique_id=847798089 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe75" parent="map/cannon/pills" unique_id=617236094 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe76" parent="map/cannon/pills" unique_id=1843713083 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe77" parent="map/cannon/pills" unique_id=188780190 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe78" parent="map/cannon/pills" unique_id=1601686228 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe79" parent="map/cannon/pills" unique_id=416588563 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe80" parent="map/cannon/pills" unique_id=624165013 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe81" parent="map/cannon/pills" unique_id=771175425 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe82" parent="map/cannon/pills" unique_id=770295169 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe83" parent="map/cannon/pills" unique_id=1792604389 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe84" parent="map/cannon/pills" unique_id=1986722820 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe85" parent="map/cannon/pills" unique_id=336374685 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe86" parent="map/cannon/pills" unique_id=1868813989 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe87" parent="map/cannon/pills" unique_id=2022851242 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe88" parent="map/cannon/pills" unique_id=79794571 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe89" parent="map/cannon/pills" unique_id=353966198 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe90" parent="map/cannon/pills" unique_id=988464575 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe91" parent="map/cannon/pills" unique_id=936663566 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe92" parent="map/cannon/pills" unique_id=2081531821 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe93" parent="map/cannon/pills" unique_id=2022175408 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe94" parent="map/cannon/pills" unique_id=285426340 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe95" parent="map/cannon/pills" unique_id=415446608 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe96" parent="map/cannon/pills" unique_id=1160108383 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe97" parent="map/cannon/pills" unique_id=273806623 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe98" parent="map/cannon/pills" unique_id=1190349794 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe99" parent="map/cannon/pills" unique_id=1667213670 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe100" parent="map/cannon/pills" unique_id=367260135 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe101" parent="map/cannon/pills" unique_id=113758992 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe102" parent="map/cannon/pills" unique_id=1529035951 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe103" parent="map/cannon/pills" unique_id=1211341039 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe104" parent="map/cannon/pills" unique_id=509780932 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe105" parent="map/cannon/pills" unique_id=610803062 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe106" parent="map/cannon/pills" unique_id=1159786975 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe107" parent="map/cannon/pills" unique_id=227510516 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe108" parent="map/cannon/pills" unique_id=754479511 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe109" parent="map/cannon/pills" unique_id=1788575962 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe110" parent="map/cannon/pills" unique_id=218766531 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe111" parent="map/cannon/pills" unique_id=98685391 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe112" parent="map/cannon/pills" unique_id=1606591964 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe113" parent="map/cannon/pills" unique_id=1839723544 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe114" parent="map/cannon/pills" unique_id=132592381 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe115" parent="map/cannon/pills" unique_id=1891825962 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe116" parent="map/cannon/pills" unique_id=347764483 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe117" parent="map/cannon/pills" unique_id=414297330 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe118" parent="map/cannon/pills" unique_id=110046947 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe119" parent="map/cannon/pills" unique_id=1490290081 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe120" parent="map/cannon/pills" unique_id=1039982183 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe121" parent="map/cannon/pills" unique_id=1854409608 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe122" parent="map/cannon/pills" unique_id=264823698 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe123" parent="map/cannon/pills" unique_id=1762650703 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe124" parent="map/cannon/pills" unique_id=12885331 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe125" parent="map/cannon/pills" unique_id=395448618 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe126" parent="map/cannon/pills" unique_id=459548290 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe127" parent="map/cannon/pills" unique_id=1030434476 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe128" parent="map/cannon/pills" unique_id=1499047792 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe129" parent="map/cannon/pills" unique_id=1656113762 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe130" parent="map/cannon/pills" unique_id=461732126 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe131" parent="map/cannon/pills" unique_id=1874333558 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe132" parent="map/cannon/pills" unique_id=1966014180 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe133" parent="map/cannon/pills" unique_id=989193906 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe134" parent="map/cannon/pills" unique_id=1090487625 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe135" parent="map/cannon/pills" unique_id=1280307363 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe136" parent="map/cannon/pills" unique_id=795201808 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe137" parent="map/cannon/pills" unique_id=1633508376 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe138" parent="map/cannon/pills" unique_id=1974277319 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe139" parent="map/cannon/pills" unique_id=268405941 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe140" parent="map/cannon/pills" unique_id=230255816 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe141" parent="map/cannon/pills" unique_id=1142412642 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe142" parent="map/cannon/pills" unique_id=97109667 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe143" parent="map/cannon/pills" unique_id=1521151467 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210628, 0.6928253, -0.36005232, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe144" parent="map/cannon/pills" unique_id=1005880366 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe145" parent="map/cannon/pills" unique_id=1391331540 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe146" parent="map/cannon/pills" unique_id=396563098 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe147" parent="map/cannon/pills" unique_id=806444838 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe148" parent="map/cannon/pills" unique_id=152512164 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe149" parent="map/cannon/pills" unique_id=52966131 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe150" parent="map/cannon/pills" unique_id=1456573610 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe151" parent="map/cannon/pills" unique_id=1811141323 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe152" parent="map/cannon/pills" unique_id=493366083 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe153" parent="map/cannon/pills" unique_id=1893515197 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe154" parent="map/cannon/pills" unique_id=845009162 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe155" parent="map/cannon/pills" unique_id=850032667 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe156" parent="map/cannon/pills" unique_id=39401398 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe157" parent="map/cannon/pills" unique_id=570048341 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe158" parent="map/cannon/pills" unique_id=475904690 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe159" parent="map/cannon/pills" unique_id=1042085275 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe160" parent="map/cannon/pills" unique_id=174774017 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe161" parent="map/cannon/pills" unique_id=1879505800 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe162" parent="map/cannon/pills" unique_id=978852661 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe163" parent="map/cannon/pills" unique_id=733808462 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe164" parent="map/cannon/pills" unique_id=794868441 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe165" parent="map/cannon/pills" unique_id=1681815500 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe166" parent="map/cannon/pills" unique_id=108381702 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe167" parent="map/cannon/pills" unique_id=1089645549 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe168" parent="map/cannon/pills" unique_id=26507668 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe169" parent="map/cannon/pills" unique_id=2147065955 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe170" parent="map/cannon/pills" unique_id=1369835538 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe171" parent="map/cannon/pills" unique_id=1780729490 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe172" parent="map/cannon/pills" unique_id=1161258489 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe173" parent="map/cannon/pills" unique_id=1943121667 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe174" parent="map/cannon/pills" unique_id=1346419082 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe175" parent="map/cannon/pills" unique_id=523584642 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe176" parent="map/cannon/pills" unique_id=542765912 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe177" parent="map/cannon/pills" unique_id=1967125892 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe178" parent="map/cannon/pills" unique_id=552023771 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe179" parent="map/cannon/pills" unique_id=2103292080 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe180" parent="map/cannon/pills" unique_id=1553597431 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe181" parent="map/cannon/pills" unique_id=999168002 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe182" parent="map/cannon/pills" unique_id=2106260545 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe183" parent="map/cannon/pills" unique_id=70527639 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe184" parent="map/cannon/pills" unique_id=357953154 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe185" parent="map/cannon/pills" unique_id=1541101178 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe186" parent="map/cannon/pills" unique_id=1343151805 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe187" parent="map/cannon/pills" unique_id=1427744029 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe188" parent="map/cannon/pills" unique_id=2124347257 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe189" parent="map/cannon/pills" unique_id=878819569 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe190" parent="map/cannon/pills" unique_id=2046626950 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe191" parent="map/cannon/pills" unique_id=1308982916 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe192" parent="map/cannon/pills" unique_id=886385764 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe193" parent="map/cannon/pills" unique_id=1415004203 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe194" parent="map/cannon/pills" unique_id=2052957061 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe195" parent="map/cannon/pills" unique_id=607255797 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe196" parent="map/cannon/pills" unique_id=945996200 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe197" parent="map/cannon/pills" unique_id=973649161 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe198" parent="map/cannon/pills" unique_id=1578977859 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe199" parent="map/cannon/pills" unique_id=289010568 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe200" parent="map/cannon/pills" unique_id=1944280231 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe201" parent="map/cannon/pills" unique_id=1844526334 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe202" parent="map/cannon/pills" unique_id=274195685 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe203" parent="map/cannon/pills" unique_id=991209282 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe204" parent="map/cannon/pills" unique_id=860484403 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe205" parent="map/cannon/pills" unique_id=593153713 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe206" parent="map/cannon/pills" unique_id=107619065 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe207" parent="map/cannon/pills" unique_id=651035435 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe208" parent="map/cannon/pills" unique_id=400789525 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe209" parent="map/cannon/pills" unique_id=1224701732 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe210" parent="map/cannon/pills" unique_id=1203969900 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe211" parent="map/cannon/pills" unique_id=1286660646 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe212" parent="map/cannon/pills" unique_id=939378822 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe213" parent="map/cannon/pills" unique_id=608544180 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe214" parent="map/cannon/pills" unique_id=860877831 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe215" parent="map/cannon/pills" unique_id=399002860 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe216" parent="map/cannon/pills" unique_id=1696717025 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="scythe217" parent="map/cannon/pills" unique_id=1319754035 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.383732, 4.5435615, -0.46111298)
+
+[node name="scythe218" parent="map/cannon/pills" unique_id=248510976 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.391576, 4.903614, 0.4717865)
+
+[node name="scythe219" parent="map/cannon/pills" unique_id=40618288 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0140247, 5.714225, -1.5522308)
+
+[node name="scythe220" parent="map/cannon/pills" unique_id=1777535191 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.0521727, 4.265361, -2.0338745)
+
+[node name="scythe221" parent="map/cannon/pills" unique_id=585880416 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -6.209614, 5.83257, -0.2678337)
+
+[node name="scythe222" parent="map/cannon/pills" unique_id=1500449284 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.329636, 3.7003326, -0.122097015)
+
+[node name="scythe223" parent="map/cannon/pills" unique_id=2128827734 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210629, 0.6928253, -0.36005238, 0.64841217, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -10.005868, 5.995406, 0.07752609)
+
+[node name="scythe224" parent="map/cannon/pills" unique_id=606243297 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.7210628, 0.6928253, -0.36005232, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -8.353507, 4.2987723, 0.45682526)
+
+[node name="scythe225" parent="map/cannon/pills" unique_id=479826945 instance=ExtResource("5_6d32c")]
+transform = Transform3D(0.007843085, 0.72106284, 0.6928253, -0.36005235, 0.6484121, -0.67076373, -0.9328992, -0.24419254, 0.2647059, -7.683179, 4.539796, -1.6166534)
+
+[node name="scythe226" parent="map/cannon/pills" unique_id=642557046 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.224274, 5.302711, -0.13276291)
+
+[node name="scythe227" parent="map/cannon/pills" unique_id=1026404347 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.232116, 5.662763, 0.80013657)
+
+[node name="scythe228" parent="map/cannon/pills" unique_id=1917013767 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.8767366, 6.263977, -1.2238808)
+
+[node name="scythe229" parent="map/cannon/pills" unique_id=789030469 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.892714, 5.0245094, -1.7055244)
+
+[node name="scythe230" parent="map/cannon/pills" unique_id=1715198544 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -8.050155, 6.59172, 0.060516357)
+
+[node name="scythe231" parent="map/cannon/pills" unique_id=673797474 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.63560903, -0.34057936, 0.69282544, -0.39467475, -0.6279395, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.96078, 5.437312, 0.20625305)
+
+[node name="scythe232" parent="map/cannon/pills" unique_id=1238360673 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -7.846409, 5.7545557, -1.5941238)
+
+[node name="scythe233" parent="map/cannon/pills" unique_id=1641058130 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -10.194047, 6.0579214, 0.7851753)
+
+[node name="scythe234" parent="map/cannon/pills" unique_id=971343839 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.6356091, -0.34057936, 0.69282544, -0.39467478, -0.6279396, -0.67076373, 0.6635008, -0.69978404, 0.2647059, -9.733117, 5.3211145, -1.2883034)
+
+[node name="scythe235" parent="map/cannon/pills" unique_id=947504604 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.638856, 5.6565228, -0.36105728)
+
+[node name="scythe236" parent="map/cannon/pills" unique_id=1065521703 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.40498, 6.618692, -0.22130203)
+
+[node name="scythe237" parent="map/cannon/pills" unique_id=232370368 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.6196365, 4.9223766, -1.8948898)
+
+[node name="scythe238" parent="map/cannon/pills" unique_id=832295754 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -8.725654, 4.1274652, -0.92261887)
+
+[node name="scythe239" parent="map/cannon/pills" unique_id=567315055 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.4547186, 6.1995363, -1.5359688)
+
+[node name="scythe240" parent="map/cannon/pills" unique_id=671872274 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.464785, 5.730518, 0.6553421)
+
+[node name="scythe241" parent="map/cannon/pills" unique_id=243641916 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -7.9449873, 4.514638, -1.1194191)
+
+[node name="scythe242" parent="map/cannon/pills" unique_id=39377315 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.0791855, 7.355882, 0.9027252)
+
+[node name="scythe243" parent="map/cannon/pills" unique_id=1674266325 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.44222456, -0.51009184, 0.73772895, 0.50015974, -0.82301176, -0.2692436, 0.7444985, 0.24991614, 0.6190833, -9.429437, 4.3131514, -0.0032043457)
+
+[node name="cannon" type="Node3D" parent="map/cannon" unique_id=1180830014 node_paths=PackedStringArray("pillsContainer", "fatass")]
+transform = Transform3D(0.9988046, 0.048880443, 0, -0.048880443, 0.9988046, 0, 0, 0, 1, 19.196877, -0.3288009, 36.64503)
+script = ExtResource("8_ixdry")
+pillsContainer = NodePath("../pills")
+fatass = NodePath("../ban")
+
+[node name="head" type="CSGCylinder3D" parent="map/cannon/cannon" unique_id=174463662]
+transform = Transform3D(0.5651686, -0.82497543, 0, 0.82497543, 0.5651686, 0, 0, 0, 1, -5.4078665, 3.265757, -0.04694748)
+use_collision = true
+radius = 2.5
+height = 16.0
+sides = 24
+
+[node name="sub" type="CSGCylinder3D" parent="map/cannon/cannon/head" unique_id=957123792]
 operation = 2
+radius = 2.0
+height = 16.0
+sides = 24
+
+[node name="idkbro" type="CSGCylinder3D" parent="map/cannon/cannon" unique_id=268114591]
+transform = Transform3D(0.5651685, -0.82497436, 0, 0.82497436, 0.5651685, 0, 0, 0, 1, 0.14934921, -0.5413456, -0.04694748)
 use_collision = true
-size = Vector3(1.1240845, 2.0645752, 0.8911872)
-material = SubResource("StandardMaterial3D_fp8sd")
+radius = 3.0
+height = 17.125
+sides = 24
 
-[node name="wall5" type="CSGBox3D" parent="." unique_id=48089860]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.153389, 2.4074554, 2.2470694)
+[node name="racing" type="Node3D" parent="map" unique_id=183819087 node_paths=PackedStringArray("holder")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0426178, 0)
+script = ExtResource("9_e8gw0")
+holder = NodePath("balls14")
+
+[node name="balls" type="Node3D" parent="map/racing" unique_id=2143090271]
+
+[node name="bb" parent="map/racing/balls" unique_id=1742253945 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.19793098, 0, -0.98021597, 0, 1, 0, 0.98021597, 0, -0.19793098, -19.0212, 7.646, -3.9591236)
+
+[node name="skate" parent="map/racing/balls" unique_id=1892985113 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.19793098, 0, -0.98021597, 0, 1, 0, 0.98021597, 0, -0.19793098, -18.55938, 7.646, -3.9286609)
+
+[node name="shuri" parent="map/racing/balls" unique_id=266463877 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.19793098, 0, -0.98021597, 0, 1, 0, 0.98021597, 0, -0.19793098, -18.117666, 7.646, -3.9286609)
+
+[node name="coil" parent="map/racing/balls" unique_id=1270474758 instance=ExtResource("5_6d32c")]
+transform = Transform3D(-0.19793098, 0, -0.98021597, 0, 1, 0, 0.98021597, 0, -0.19793098, -17.518559, 7.646, -3.9286609)
+
+[node name="balls2" type="CSGBox3D" parent="map/racing" unique_id=1349223740]
+transform = Transform3D(1, 0, 0, 0, 0.96169347, 0.27412707, 0, -0.27412707, 0.96169347, -18.195526, 6.2333426, -5.5325074)
 use_collision = true
-size = Vector3(5.464859, 4.814911, 0.6804714)
-material = SubResource("StandardMaterial3D_fp8sd")
+size = Vector3(2.2122345, 0.19036865, 9.5999975)
+material = SubResource("StandardMaterial3D_0k6pt")
 
-[node name="sub" type="CSGBox3D" parent="wall5" unique_id=91098681]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7699213, -1.3751678, -0.008507729)
-operation = 2
+[node name="balls3" type="CSGBox3D" parent="map/racing" unique_id=571197261]
+transform = Transform3D(1, 0, 0, 0, 0.96169347, 0.27412707, 0, -0.27412707, 0.96169347, -16.854511, 6.622651, -5.6434784)
 use_collision = true
-size = Vector3(1.1240845, 2.0645752, 0.8911872)
-material = SubResource("StandardMaterial3D_fp8sd")
-
-[node name="lights" type="Node3D" parent="." unique_id=1846499259]
-
-[node name="light" type="OmniLight3D" parent="lights" unique_id=869808502]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.788552, 3.0585003, 0.7538414)
-light_color = Color(0.84, 0, 0, 1)
-shadow_enabled = true
-distance_fade_enabled = true
-omni_range = 22.22
-
-[node name="light2" type="OmniLight3D" parent="lights" unique_id=2061318041]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.252022, 3.0585003, 0.67268753)
-light_color = Color(0.84, 0, 0, 1)
-shadow_enabled = true
-distance_fade_enabled = true
-omni_range = 22.22
-
-[node name="light3" type="OmniLight3D" parent="lights" unique_id=2000065431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.252022, 3.0585003, 5.197021)
-light_color = Color(0.84, 0, 0, 1)
-shadow_enabled = true
-distance_fade_enabled = true
-omni_range = 22.22
-
-[node name="light4" type="OmniLight3D" parent="lights" unique_id=962741744]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.808844, 3.0585003, 5.2984624)
-light_color = Color(0.84, 0, 0, 1)
-shadow_enabled = true
-distance_fade_enabled = true
-omni_range = 22.22
-
-[node name="pills" type="Node3D" parent="." unique_id=1786567126]
-
-[node name="sword" parent="pills" unique_id=1414264408 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 0.54124844)
-
-[node name="skate" parent="pills" unique_id=197384147 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 1.2482208)
-
-[node name="bio" parent="pills" unique_id=1618868175 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 1.966705)
-
-[node name="tana" parent="pills" unique_id=1267471857 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 2.7387595)
-
-[node name="ban" parent="pills" unique_id=1212325261 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.0144, 1.0301514, 3.4225953)
-
-[node name="rocket" parent="pills" unique_id=176678513 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 0.54124844)
-
-[node name="sling" parent="pills" unique_id=1722349595 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 1.2482208)
-
-[node name="hyper" parent="pills" unique_id=872516885 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 1.966705)
-
-[node name="shuri" parent="pills" unique_id=31083502 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 2.7387595)
-
-[node name="scythe" parent="pills" unique_id=2073398204 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.786453, 1.0301514, 3.4225953)
-
-[node name="med" parent="pills" unique_id=1740909527 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 0.54124844)
-
-[node name="bb" parent="pills" unique_id=282742788 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 1.2482208)
-
-[node name="sub" parent="pills" unique_id=1413781416 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 1.966705)
-
-[node name="vine" parent="pills" unique_id=638518311 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 2.7387595)
-
-[node name="coil" parent="pills" unique_id=209027227 instance=ExtResource("5_6d32c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.560087, 1.0301514, 3.4225953)
-
-[node name="sword2" parent="pills" unique_id=1698277754 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.446944, 1.0301514, 1.2571443)
-
-[node name="skate2" parent="pills" unique_id=2102168190 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.206456, 1.0301514, 1.9219568)
-
-[node name="bio2" parent="pills" unique_id=1278643635 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.962051, 1.0301514, 2.5975943)
-
-[node name="tana2" parent="pills" unique_id=276922281 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.699425, 1.0301514, 3.3236077)
-
-[node name="ban2" parent="pills" unique_id=43285854 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 12.466807, 1.0301514, 3.9666634)
-
-[node name="rocket2" parent="pills" unique_id=1092579465 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.1729555, 1.0301514, 1.5197706)
-
-[node name="sling2" parent="pills" unique_id=930778878 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.932467, 1.0301514, 2.1845832)
-
-[node name="hyper2" parent="pills" unique_id=1702598606 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.688064, 1.0301514, 2.8602204)
-
-[node name="shuri2" parent="pills" unique_id=1337746983 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.425436, 1.0301514, 3.5862339)
-
-[node name="scythe2" parent="pills" unique_id=1390460412 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.192819, 1.0301514, 4.2292895)
-
-[node name="med2" parent="pills" unique_id=2031190538 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.900454, 1.0301514, 1.7829348)
-
-[node name="bb2" parent="pills" unique_id=177548570 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.6599655, 1.0301514, 2.4477472)
-
-[node name="sub2" parent="pills" unique_id=971159782 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.415562, 1.0301514, 3.1233845)
-
-[node name="vine2" parent="pills" unique_id=641395112 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 14.152935, 1.0301514, 3.8493981)
-
-[node name="coil2" parent="pills" unique_id=725386192 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.34016618, 0, 0.9403653, 0, 1, 0, -0.9403653, 0, 0.34016618, 13.920317, 1.0301514, 4.4924536)
-
-[node name="sword3" parent="pills" unique_id=493148467 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.856405, 1.0301514, 2.547666)
-
-[node name="skate3" parent="pills" unique_id=745210571 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.336824, 1.0301514, 3.0270882)
-
-[node name="bio3" parent="pills" unique_id=1466218787 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.808783, 1.0301514, 3.5143166)
-
-[node name="tana3" parent="pills" unique_id=412479935 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.24137, 1.0301514, 4.0378733)
-
-[node name="ban3" parent="pills" unique_id=1432600322 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 14.738793, 1.0301514, 4.501606)
-
-[node name="rocket3" parent="pills" unique_id=1328311121 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.379961, 1.0301514, 3.1150775)
-
-[node name="sling3" parent="pills" unique_id=1976367106 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.86038, 1.0301514, 3.594499)
-
-[node name="hyper3" parent="pills" unique_id=1731261752 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.332338, 1.0301514, 4.0817275)
-
-[node name="shuri3" parent="pills" unique_id=2062350848 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.764925, 1.0301514, 4.605284)
-
-[node name="scythe3" parent="pills" unique_id=1602788392 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.262348, 1.0301514, 5.0690165)
-
-[node name="med3" parent="pills" unique_id=2119506173 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.904589, 1.0301514, 3.683651)
-
-[node name="bb3" parent="pills" unique_id=112273319 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 17.385006, 1.0301514, 4.163072)
-
-[node name="sub3" parent="pills" unique_id=256807297 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.856964, 1.0301514, 4.6503005)
-
-[node name="vine3" parent="pills" unique_id=2088210518 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 16.289553, 1.0301514, 5.1738567)
-
-[node name="coil3" parent="pills" unique_id=526728035 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.73493826, 0, 0.678134, 0, 1, 0, -0.678134, 0, 0.73493826, 15.786976, 1.0301514, 5.6375904)
-
-[node name="sword4" parent="pills" unique_id=280489216 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.268153, 3.7714114, 3.6519113)
-
-[node name="skate4" parent="pills" unique_id=96288079 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.654455, 3.4242823, 3.6000848)
-
-[node name="bio4" parent="pills" unique_id=2117474195 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.030764, 3.0715013, 3.5474138)
-
-[node name="tana4" parent="pills" unique_id=463927886 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.36057, 2.6924162, 3.4908166)
-
-[node name="ban4" parent="pills" unique_id=595480982 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.766956, 2.356648, 3.4406862)
-
-[node name="rocket4" parent="pills" unique_id=1224101792 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.21889, 3.7435465, 4.4218874)
-
-[node name="sling4" parent="pills" unique_id=652663129 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.605192, 3.396418, 4.3700604)
-
-[node name="hyper4" parent="pills" unique_id=1736242195 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.981502, 3.0436368, 4.3173895)
-
-[node name="shuri4" parent="pills" unique_id=2031722775 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.311307, 2.6645515, 4.2607913)
-
-[node name="scythe4" parent="pills" unique_id=826262162 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.717693, 2.328783, 4.210661)
-
-[node name="med4" parent="pills" unique_id=1197336080 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 15.169527, 3.7156248, 5.19344)
-
-[node name="bb4" parent="pills" unique_id=239181741 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 14.555828, 3.368496, 5.1416116)
-
-[node name="sub4" parent="pills" unique_id=1452245133 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.932137, 3.0157142, 5.0889406)
-
-[node name="vine4" parent="pills" unique_id=1320605370 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 13.261943, 2.6366298, 5.032343)
-
-[node name="coil4" parent="pills" unique_id=257610451 instance=ExtResource("5_6d32c")]
-transform = Transform3D(0.8680653, -0.4923324, -0.06380765, 0.4910077, 0.8704073, -0.036091812, 0.07330781, 0, 0.9973093, 12.668328, 2.300861, 4.982214)
+size = Vector3(0.5, 2, 9.5999975)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls4" type="CSGBox3D" parent="map/racing" unique_id=1480351209]
+transform = Transform3D(1, 0, 0, 0, 0.96169347, 0.27412707, 0, -0.27412707, 0.96169347, -19.598154, 6.622651, -5.6434784)
+use_collision = true
+size = Vector3(0.5, 2, 9.5999975)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls5" type="CSGBox3D" parent="map/racing" unique_id=1614156504]
+transform = Transform3D(0.35043624, -0.25674373, 0.9007092, 0, 0.96169347, 0.27412707, -0.9365866, -0.09606406, 0.33701223, -20.541523, 3.972035, -11.867661)
+use_collision = true
+size = Vector3(2.9693985, 0.19036865, 9)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls6" type="CSGBox3D" parent="map/racing" unique_id=2060020896]
+transform = Transform3D(0.35043624, -0.25674373, 0.9007092, 0, 0.96169347, 0.27412707, -0.9365866, -0.09606406, 0.33701223, -16.557514, 5.5537963, -10.894509)
+use_collision = true
+size = Vector3(2, 2, 0.3)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls7" type="CSGBox3D" parent="map/racing" unique_id=2114285247]
+transform = Transform3D(0.35043624, -0.25674373, 0.9007092, 0, 0.96169347, 0.27412707, -0.9365866, -0.09606406, 0.33701223, -20.199846, 4.3613434, -13.39931)
+use_collision = true
+size = Vector3(0.42622757, 2, 9)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls8" type="CSGBox3D" parent="map/racing" unique_id=692328606]
+transform = Transform3D(0.35043624, -0.25674373, 0.9007092, 0, 0.96169347, 0.27412707, -0.9365866, -0.09606406, 0.33701223, -21.798542, 4.194749, -10.794362)
+use_collision = true
+size = Vector3(0.42622757, 2, 5.543335)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls9" type="CSGBox3D" parent="map/racing" unique_id=1336397552]
+transform = Transform3D(-0.22606854, -0.07562313, 0.9711715, 0.0445865, 0.9951338, 0.087867856, -0.9730905, 0.06316528, -0.22159664, -27.571281, 2.446262, -12.543644)
+use_collision = true
+size = Vector3(2.9693985, 0.19036865, 9)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls10" type="CSGBox3D" parent="map/racing" unique_id=1121520826]
+transform = Transform3D(-0.22606854, -0.07562313, 0.9711715, 0.0445865, 0.9951338, 0.087867856, -0.9730905, 0.06316528, -0.22159664, -27.317144, 2.9115813, -14.152973)
+use_collision = true
+size = Vector3(0.3, 2, 7.8)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls11" type="CSGBox3D" parent="map/racing" unique_id=867716288]
+transform = Transform3D(-0.22606854, -0.07562313, 0.9711715, 0.0445865, 0.9951338, 0.087867856, -0.9730905, 0.06316528, -0.22159664, -27.593832, 2.8865478, -10.88984)
+use_collision = true
+size = Vector3(0.3, 2, 7.2302003)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls12" type="CSGBox3D" parent="map/racing" unique_id=505563849]
+transform = Transform3D(1, 0, 0, 0, 0.96169347, 0.27412707, 0, -0.27412707, 0.96169347, -16.591003, 7.830193, -3.2100797)
+use_collision = true
+size = Vector3(0.9620743, 1.9884491, 4.2575903)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls13" type="CSGBox3D" parent="map/racing" unique_id=62809714]
+transform = Transform3D(1, 0, 0, 0, 0.96169347, 0.27412707, 0, -0.27412707, 0.96169347, -19.751205, 7.830193, -3.2100797)
+use_collision = true
+size = Vector3(0.9620743, 1.9884491, 4.2575903)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls14" type="CSGBox3D" parent="map/racing" unique_id=1294717080]
+transform = Transform3D(1, 0, 0, 0, 0.96169347, 0.27412707, 0, -0.27412707, 0.96169347, -18.195526, 7.3130503, -5.0453897)
+use_collision = true
+size = Vector3(2.2122345, 2, 0.46684027)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls15" type="CSGBox3D" parent="map/racing" unique_id=1112799259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.234, 2.0790346, -10.037841)
+use_collision = true
+size = Vector3(12.2052, 0.19036865, 10.527517)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls16" type="CSGBox3D" parent="map/racing" unique_id=512537355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3361, 2.4838502, -10.037841)
+use_collision = true
+size = Vector3(0.5, 1, 10.528)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls17" type="CSGBox3D" parent="map/racing" unique_id=969096812]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.1001, 2.4838502, -5.037841)
+use_collision = true
+size = Vector3(0.5, 2, 13)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls18" type="CSGBox3D" parent="map/racing" unique_id=71601757]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -37.1001, 2.4838502, -15.037841)
+use_collision = true
+size = Vector3(0.5, 2, 13)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls19" type="CSGBox3D" parent="map/racing" unique_id=34516781]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -30.9001, 2.4838502, -7.537841)
+use_collision = true
+size = Vector3(0.5, 2, 5.6)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="balls20" type="CSGBox3D" parent="map/racing" unique_id=65869915]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -30.9001, 2.4838502, -16.037842)
+use_collision = true
+size = Vector3(0.5, 2, 5.6)
+material = SubResource("StandardMaterial3D_0k6pt")
+
+[node name="ui" type="Control" parent="." unique_id=1314513447]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="debug" type="Control" parent="ui" unique_id=1290044322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_0deix")
+
+[node name="fps" type="Label" parent="ui/debug" unique_id=1856715205]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 14
+text = "fps: 0"
+
+[node name="network" parent="ui" unique_id=1914415619 instance=ExtResource("3_8dclr")]
+visible = false
+layout_mode = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=440405101]
+_spawnable_scenes = PackedStringArray("uid://cajj8pme2ge4i")
+spawn_path = NodePath("..")
+script = ExtResource("4_fc0cb")
+networkPlayer = ExtResource("1_hp8tt")
