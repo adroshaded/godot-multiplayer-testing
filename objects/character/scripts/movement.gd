@@ -43,10 +43,11 @@ func _physics_process(delta: float) -> void:
 	var oldVel = velocity
 	move_and_slide()
 	
+	var mass = 2
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var normal = collision.get_normal()
 		var object = collision.get_collider()
 		var f = oldVel.length() * oldVel.normalized().dot(normal)
 		if object is RigidBody3D:
-			object.apply_central_impulse(normal * f * object.mass)
+			object.apply_central_impulse(normal * f * object.mass / mass)

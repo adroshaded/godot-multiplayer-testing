@@ -28,7 +28,7 @@ func _ready() -> void:
 		i.set_meta("originalPosition", i.position)
 	fatass.set_meta("originalPosition", fatass.position)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("3"):
 		for i in pillsContainer.get_children():
 			applyVelocity(i)

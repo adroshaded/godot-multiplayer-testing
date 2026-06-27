@@ -46,7 +46,7 @@ var pillData = {
 		"imageSize": 2.2 # 2.2 / 1.3
 	},
 	"shuriken": {
-		"color": Color("8159e5"),
+		"color": Color("7CC740"),
 		"image": "res://assets/faces/shuriken.png",
 		"imageSize": 1.2
 	},
