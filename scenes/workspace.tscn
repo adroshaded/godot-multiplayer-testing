@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://d1fwd7obo1fch"]
 
-[ext_resource type="PackedScene" uid="uid://c8hyp78oap0y7" path="res://objects/camera/camera.tscn" id="1_0k6pt"]
 [ext_resource type="PackedScene" uid="uid://cajj8pme2ge4i" path="res://objects/character/character.tscn" id="1_hp8tt"]
-[ext_resource type="PackedScene" uid="uid://5f81ibthsmiv" path="res://objects/ui/network/network_ui.tscn" id="3_8dclr"]
 [ext_resource type="Script" uid="uid://psj01yhvkovn" path="res://scripts/network/playerSpawner.gd" id="4_fc0cb"]
 [ext_resource type="PackedScene" uid="uid://chlcnb4bjpiej" path="res://objects/pill/pill_baby.tscn" id="5_6d32c"]
 [ext_resource type="Texture2D" uid="uid://cvihlkmrqwvle" path="res://assets/faces/hyperlaser.png" id="5_fp8sd"]
 [ext_resource type="Script" uid="uid://c4t5f238cmuor" path="res://scripts/random/map/bowlingBall.gd" id="6_dtumg"]
-[ext_resource type="Script" uid="uid://dmdcuouwrc6h8" path="res://objects/ui/debug/scripts/debugUI.gd" id="8_0deix"]
 [ext_resource type="Script" uid="uid://sq7bnuaeyjv1" path="res://scripts/random/map/cannon.gd" id="8_ixdry"]
 [ext_resource type="Script" uid="uid://dqom6sp6fdd0i" path="res://scripts/random/map/racing.gd" id="9_e8gw0"]
 
@@ -66,24 +63,6 @@ environment = SubResource("Environment_fc0cb")
 [node name="sun" type="DirectionalLight3D" parent="." unique_id=951604018]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 shadow_enabled = true
-
-[node name="camera" parent="." unique_id=301207084 node_paths=PackedStringArray("subject") instance=ExtResource("1_0k6pt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
-subject = NodePath("../character")
-subjectFollowRotation = true
-offset = Vector3(0, 0.75, 0)
-relativeOffset = Vector3(1.1, 0, 0)
-relativeOffsetAxis = Vector3(1, 0, 1)
-mouseLocked = true
-maxZoomDist = 50.0
-zoomAdjustDistance = 3.0
-easeRotation = true
-easeZoom = true
-rotationSmoothness = 20.0
-zoomAdjustSmoothness = 20.0
-
-[node name="character" parent="." unique_id=816984016 instance=ExtResource("1_hp8tt")]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 1, 0)
 
 [node name="map" type="Node3D" parent="." unique_id=731626370]
 
@@ -1397,36 +1376,6 @@ transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, -30.
 use_collision = true
 size = Vector3(0.5, 2, 5.6)
 material = SubResource("StandardMaterial3D_0k6pt")
-
-[node name="ui" type="Control" parent="." unique_id=1314513447]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="debug" type="Control" parent="ui" unique_id=1290044322]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("8_0deix")
-
-[node name="fps" type="Label" parent="ui/debug" unique_id=1856715205]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 14
-text = "fps: 0"
-
-[node name="network" parent="ui" unique_id=1914415619 instance=ExtResource("3_8dclr")]
-visible = false
-layout_mode = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=440405101]
 _spawnable_scenes = PackedStringArray("uid://cajj8pme2ge4i")

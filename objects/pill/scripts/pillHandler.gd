@@ -98,9 +98,9 @@ func changePhighter(type : String) -> void:
 	set_meta("type", type)
 
 func isTextMatchingPhighter(text : String) -> String:
-	var regex = RegEx.create_from_string("[A-z]+") # dont get numbers
+	var regex = RegEx.create_from_string("[A-z]+") # only get letters
 	for i : String in pillData:
-		if i.is_subsequence_ofn(regex.search(text).get_string()) or regex.search(text).get_string().is_subsequence_of(i):
+		if i.is_subsequence_ofn(regex.search(text).get_string()) or regex.search(text).get_string().is_subsequence_ofn(i):
 			return i
 	return ""
 

@@ -9,18 +9,8 @@ var walkDir = Vector2.ZERO
 var fallAccel = 35
 var jumpHeight = 10
 
-func _enter_tree() -> void:
-	print(name, " (", multiplayer.get_unique_id(), ")")
-	set_multiplayer_authority(int(name))
-
-func _ready() -> void:
-	if is_multiplayer_authority():
-		cam.subject = self
-		position = Vector3(0, 10, 0)
-
 func _physics_process(delta: float) -> void:
-	if multiplayer.get_peers() and !is_multiplayer_authority():
-		process_mode = Node.PROCESS_MODE_DISABLED
+	if !PlayerService.isNodeOwnedByPlayer(self, PlayerService.localPlayer):
 		return
 	
 	lookDir = Vector2(-sin(cam.rotation.y), -cos(cam.rotation.y))

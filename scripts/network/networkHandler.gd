@@ -76,6 +76,6 @@ func handleEvents():
 				if isServer:
 					packetRecieved.emit(peer.get_meta("id"), peer.get_packet())
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !connection:
 		return

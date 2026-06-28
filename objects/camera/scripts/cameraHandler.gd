@@ -124,7 +124,19 @@ func _unhandled_input(event: InputEvent) -> void:
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					get_viewport().warp_mouse(rightClickPos)
 
+var subjectWarned = false
 func _process(delta: float) -> void:
+	if !PlayerService.isNodeOwnedByPlayer(self, PlayerService.localPlayer):
+		return
+	
+	if !subject:
+		if !subjectWarned:
+			push_warning("no subject")
+			subjectWarned = true
+		return
+	else:
+		subjectWarned = false
+	
 	# zoom
 	if easeZoom:
 		zoomDist = lerp(zoomDist, targetZoomDist, min(delta * zoomAdjustSmoothness, 1.0))

@@ -5,6 +5,17 @@
 
 [node name="camera" type="Camera3D" unique_id=301207084]
 script = ExtResource("1_7tkm2")
+subjectFollowRotation = true
+offset = Vector3(0, 0.75, 0)
+relativeOffset = Vector3(1.1, 0, 0)
+relativeOffsetAxis = Vector3(1, 0, 1)
+mouseLocked = true
+maxZoomDist = 50.0
+zoomAdjustDistance = 3.0
+easeRotation = true
+easeZoom = true
+rotationSmoothness = 20.0
+zoomAdjustSmoothness = 20.0
 
 [node name="controller" type="Node" parent="." unique_id=1604640381]
 script = ExtResource("2_2sgxd")

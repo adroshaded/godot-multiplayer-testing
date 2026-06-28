@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="multiplayer test"
-run/main_scene="uid://d1fwd7obo1fch"
+run/main_scene="uid://04sbq0gjfb28"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 NetworkHandler="*uid://b1q3a3gsbovd1"
+PlayerService="*uid://dwjgcoc67dp3t"
 
 [input]
 
