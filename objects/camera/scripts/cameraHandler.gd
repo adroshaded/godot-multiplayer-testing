@@ -129,6 +129,7 @@ func _process(delta: float) -> void:
 	if !PlayerService.isNodeOwnedByPlayer(self, PlayerService.localPlayer):
 		return
 	
+	# warnings
 	if !subject:
 		if !subjectWarned:
 			push_warning("no subject")

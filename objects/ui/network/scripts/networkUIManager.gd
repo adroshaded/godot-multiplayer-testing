@@ -1,12 +1,12 @@
 extends Control
 
 func _on_server_pressed() -> void:
-	NetworkHandler.startServer()
+	NetworkService.startServer()
 	$id.text = "id: " + str(multiplayer.get_unique_id()) + " (server)"
 	print("attempt server start (", multiplayer.get_unique_id(), ")")
 
 func _on_client_pressed() -> void:
-	NetworkHandler.startClient()
+	NetworkService.startClient()
 	$id.text = "id: " + str(multiplayer.get_unique_id())
 	print("attempt client start (", multiplayer.get_unique_id(), ")")
 

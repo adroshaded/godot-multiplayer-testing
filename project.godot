@@ -17,8 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-NetworkHandler="*uid://b1q3a3gsbovd1"
+NetworkHandler="uid://b1q3a3gsbovd1"
 PlayerService="*uid://dwjgcoc67dp3t"
+NetworkService="*uid://c72pq423x4uo7"
+
+[global_group]
+
+character=""
 
 [input]
 
